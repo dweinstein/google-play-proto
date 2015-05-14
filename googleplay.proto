@@ -1077,7 +1077,18 @@ message Annotations {
     optional SuggestionReasons suggestionReasons = 19;
     optional Warning optimalDeviceClassWarning = 20;
     repeated BadgeContainer docBadgeContainer = 21;
+    optional SectionMetadata sectionSuggestForRating = 22;
+    optional SectionMetadata sectionRateAndReview = 23;
+    optional SectionMetadata sectionPurchaseCrossSell = 24;
+    repeated OverflowLink overflowLink = 25;
+    optional DocV2 creatorDoc = 26;
 }
+
+message OverflowLink {
+    optional string title = 1;
+    optional Link link = 2;
+}
+
 message DocV2 {
     optional string docid = 1;
     optional string backendDocid = 2;
