@@ -1080,6 +1080,9 @@ message DocV2 {
     optional string subtitle = 22;
     optional string translatedDescriptionHtml = 23;
     optional bytes serverLogsCookie = 24;
+    optional ProductDetails productDetails = 25;
+    optional bool mature = 26;
+    optional string promotionalDescription = 27;
 }
 message EncryptedSubscriberInfo {
     optional string data = 1;
