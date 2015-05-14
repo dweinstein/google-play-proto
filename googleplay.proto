@@ -1084,6 +1084,23 @@ message DocV2 {
     optional bool mature = 26;
     optional string promotionalDescription = 27;
 }
+
+message ProductDetails {
+    optional string title = 1;
+    repeated ProductDetailsSection section = 2;
+}
+
+message ProductDetailsSection {
+    optional string title = 1;
+    repeated ProductDetailsDescription description = 3;
+}
+
+message ProductDetailsDescription {
+    optional Image image = 1;
+    optional string description = 2;
+}
+
+
 message EncryptedSubscriberInfo {
     optional string data = 1;
     optional string encryptedKey = 2;
