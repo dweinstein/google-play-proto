@@ -1417,8 +1417,12 @@ message DirectPurchase {
     optional string parentDocid = 3;
     optional int32 offerType = 4;
 }
+
 message RedeemGiftCard {
+    optional string prefillCode = 1;
+    optional string partnerPayload = 2;
 }
+
 message ResolvedLink {
     optional string detailsUrl = 1;
     optional string browseUrl = 2;
