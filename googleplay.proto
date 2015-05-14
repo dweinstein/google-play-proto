@@ -670,6 +670,12 @@ message DiscoveryBadge {
     optional string contentDescription = 11;
 }
 
+message DiscoveryBadgeLink {
+    optional Link link = 1;
+    optional string userReviewsUrl = 2;
+    optional string criticReviewsUrl = 3;
+}
+
 message DeviceConfigurationProto {
     optional int32 touchScreen = 1;
     optional int32 keyboard = 2;
