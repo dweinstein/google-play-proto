@@ -117,7 +117,7 @@ message BrowseResponse {
 message QuickLink {
     optional string name = 1;
     optional Image image = 2;
-    optional  link = 3;
+    optional ResolvedLink link = 3;
     optional bool displayRequired = 4;
     optional bytes serverLogsCookie = 5;
     optional int32 backendId = 6;
