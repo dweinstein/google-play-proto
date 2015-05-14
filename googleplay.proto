@@ -117,7 +117,7 @@ message BrowseResponse {
 message QuickLink {
     optional string name = 1;
     optional Image image = 2;
-    optional ResolvedLink link = 3;
+    optional  link = 3;
     optional bool displayRequired = 4;
     optional bytes serverLogsCookie = 5;
     optional int32 backendId = 6;
@@ -1426,6 +1426,11 @@ message ResolvedLink {
     optional DirectPurchase directPurchase = 4;
     optional string homeUrl = 5;
     optional RedeemGiftCard redeemGiftCard = 6;
+    optional bytes serverLogsCookie = 7;
+    optional Docid docid = 8;
+    optional string wishlistUrl = 9;
+    optional int32 backend = 10;
+    optional string query = 11;
 }
 message Payload {
     optional ListResponse listResponse = 1;
