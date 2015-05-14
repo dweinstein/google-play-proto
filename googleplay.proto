@@ -789,6 +789,7 @@ message EditorialSeriesContainer {
 message Link {
     optional string uri = 1;
     optional ResolvedLink resolvedLink = 2;
+    optional int32 uriBackend = 3;
 }
 message NextBanner {
     optional string title = 1;
