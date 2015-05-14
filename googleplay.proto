@@ -653,7 +653,23 @@ message DetailsResponse {
     optional DocV2 docV2 = 4;
     optional string footerHtml = 5;
     optional bytes serverLogsCookie = 6;
+    repeated DiscoveryBadge discoveryBadge = 7;
 }
+
+message DiscoveryBadge {
+    optional string title = 1;
+    optional Image image = 2;
+    optional int32 backgroundColor = 3;
+    optional DiscoveryBadgeLink discoveryBadgeLink = 4;
+    optional bytes serverLogsCookie = 5;
+    optional bool isPlusOne = 6;
+    optional float aggregateRating = 7;
+    optional int32 userStarRating = 8;
+    optional string downloadCount = 9;
+    optional string downloadUnits = 10;
+    optional string contentDescription = 11;
+}
+
 message DeviceConfigurationProto {
     optional int32 touchScreen = 1;
     optional int32 keyboard = 2;
