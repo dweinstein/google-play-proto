@@ -1109,26 +1109,32 @@ message EncryptedSubscriberInfo {
     optional int32 googleKeyVersion = 5;
     optional int32 carrierKeyVersion = 6;
 }
+
 message Availability {
     optional int32 restriction = 5;
     optional int32 offerType = 6;
     optional Rule rule = 7;
-    repeated group PerDeviceAvailabilityRestriction = 9 {
-        optional fixed64 androidId = 10;
-        optional int32 deviceRestriction = 11;
-        optional int64 channelId = 12;
-        optional FilterEvaluationInfo filterInfo = 15;
-    }
+    repeated PerDeviceAvailabilityRestriction perDeviceAvailabilityRestriction = 9;
     optional bool availableIfOwned = 13;
     repeated Install install = 14;
     optional FilterEvaluationInfo filterInfo = 16;
     optional OwnershipInfo ownershipInfo = 17;
     repeated AvailabilityProblem availabilityProblem = 18;
+    optional bool hidden = 21;
 }
+
+message PerDeviceAvailabilityRestriction {
+    optional fixed64 androidId = 10;
+    optional int32 deviceRestriction = 11;
+    optional int64 channelId = 12;
+    optional FilterEvaluationInfo filterInfo = 15;
+}
+
 message AvailabilityProblem {
     optional int32 problemType = 1;
     repeated string missingValue = 2;
 }
+
 message FilterEvaluationInfo {
     repeated RuleEvaluation ruleEvaluation = 1;
 }
