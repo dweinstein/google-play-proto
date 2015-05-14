@@ -40,7 +40,6 @@ message GservicesSetting {
   optional bytes name = 1;
   optional bytes value = 2;
 }
-option java_package = "com.android.checkin.proto";
 
 message DeviceConfigurationProto {
   optional int32 touchScreen = 1;
@@ -61,7 +60,6 @@ message DeviceConfigurationProto {
   optional int32 deviceClass = 16;
   optional int32 maxApkDownloadSizeMb = 17;
 }
-option java_package = "com.android.checkin.proto";
 
 message AndroidCheckinProto {
   optional AndroidBuildProto build = 1;
