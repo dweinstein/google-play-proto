@@ -389,6 +389,7 @@ message Install {
     optional fixed64 androidId = 1;
     optional int32 version = 2;
     optional bool bundled = 3;
+    optional bool pending = 4;
 }
 message Offer {
     optional int64 micros = 1;
