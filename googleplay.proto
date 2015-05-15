@@ -1552,6 +1552,8 @@ message Review {
     optional string replyText = 29;
     optional int64 replyTimestampMsec = 30;
     optional PlusProfile plusProfile = 31;
+    optional DocV2 author = 33;
+    optional Image sentiment = 34
 }
 
 message ReviewResponse {
@@ -2433,4 +2435,13 @@ message UninstallReasonRequestProto {
     optional int32 reason = 2;
 }
 message UninstallReasonResponseProto {
+}
+message CriticReviewsResponse {
+    optional string title = 1;
+    optional Image aggregateSentiment = 2;
+    optional uint32 totalNumReviews = 3;
+    optional uint32 percentFavorable = 4;
+    optional string sourceText = 5;
+    optional Link source = 6;
+    repeated Review review = 7;
 }
