@@ -1319,6 +1319,7 @@ message OwnershipInfo {
     optional GroupLicenseInfo groupLicenseInfo = 10;
     optional LicensedDocumentInfo licensedDocumentInfo = 11;
     optional int32 quantity = 12;
+    optional int64 libraryExpirationTimestampMsec = 14;
 }
 message AppData {
     optional int32 version = 1;
