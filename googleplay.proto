@@ -1553,7 +1553,7 @@ message Review {
     optional int64 replyTimestampMsec = 30;
     optional PlusProfile plusProfile = 31;
     optional DocV2 author = 33;
-    optional Image sentiment = 34
+    optional Image sentiment = 34;
 }
 
 message ReviewResponse {
