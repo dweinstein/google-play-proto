@@ -891,7 +891,7 @@ message AppDetails {
     repeated string appCategory = 7;
     optional int32 contentRating = 8;
     optional int64 installationSize = 9;
-    repeated string oBSOLETEPermission = 10;
+    repeated string permission = 10;
     optional string developerEmail = 11;
     optional string developerWebsite = 12;
     optional string numDownloads = 13;
