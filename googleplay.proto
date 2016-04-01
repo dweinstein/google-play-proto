@@ -901,7 +901,6 @@ message AppDetails {
     repeated FileMetadata file = 17;
     optional string appType = 18;
     repeated string certificateHash = 19;
-    repeated AppPermission permission = 20;
     optional bool variesByAccount = 21;
     repeated CertificateSet certificateSet = 22;
     repeated string autoAcquireFreeAppIfHigherVersionAvailableTag = 23;
