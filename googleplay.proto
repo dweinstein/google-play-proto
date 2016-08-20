@@ -943,7 +943,7 @@ message DocumentDetails {
     optional TvShowDetails tvShowDetails = 9;
     optional TvSeasonDetails tvSeasonDetails = 10;
     optional TvEpisodeDetails tvEpisodeDetails = 11;
-    optional NewsDetails newsDetails = 12;
+    // optional NewsDetails newsDetails = 12;
 }
 message FileMetadata {
     optional int32 fileType = 1;
