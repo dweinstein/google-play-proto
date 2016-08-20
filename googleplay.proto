@@ -910,7 +910,7 @@ message AppDetails {
     optional bool externallyHosted = 27;
     optional bool everExternallyHosted = 28;
     optional string installNotes = 30;
-    optional string installLocation = 31;
+    optional int32 installLocation = 31;
 }
 
 message CertificateSet {
