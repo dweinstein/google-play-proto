@@ -16,6 +16,7 @@ message AndroidAppDeliveryData {
     optional string gzippedDownloadUrl = 13;
     optional int64 gzippedDownloadSize = 14;
     repeated SplitDeliveryData splitDeliveryData = 15;
+    optional int32 installLocation = 16;
 }
 
 message SplitDeliveryData {
