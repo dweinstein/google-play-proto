@@ -169,6 +169,7 @@ message BuyResponse {
     optional string permissionErrorTitleText = 52;
     optional string permissionErrorMessageText = 53;
     optional bytes serverLogsCookie = 54;
+    optional string encodedDeliveryToken = 55;
 }
 message LineItem {
     optional string name = 1;
