@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 message AckNotificationResponse {
 }
 message AndroidAppDeliveryData {
@@ -392,6 +394,13 @@ message Install {
     optional bool bundled = 3;
     optional bool pending = 4;
 }
+
+message GroupLicenseKey {
+}
+message LicenseTerms {
+    optional GroupLicenseKey groupLicenseKey = 1;
+}
+
 message Offer {
     optional int64 micros = 1;
     optional string currencyCode = 2;
@@ -411,6 +420,38 @@ message Offer {
     optional int32 onSaleDateDisplayTimeZoneOffsetMsec = 16;
     optional int32 licensedOfferType = 17;
     optional SubscriptionContentTerms subscriptionContentTerms = 18;
+    optional string offerId = 19;
+    optional int64 preorderFulfillmentDisplayDate = 20;
+    optional LicenseTerms licenseTerms = 21;
+    optional bool temporarilyFree = 22;
+    optional VoucherTerms voucherTerms = 23;
+    repeated OfferPayment offerPayment = 24;
+    optional bool repeatLastPayment = 25;
+    optional string buyButtonLabel = 26;
+    optional bool instantPurchaseEnabled = 27;
+}
+
+message MonthAndDay {
+    optional uint32 month = 1;
+    optional uint32 day = 2;
+}
+message OfferPaymentPeriod {
+    optional TimePeriod duration = 1;
+    optional MonthAndDay start = 2;
+    optional MonthAndDay end = 3;
+}
+message OfferPaymentOverride {
+    optional int64 micros = 1;
+    optional MonthAndDay start = 2;
+    optional MonthAndDay end = 3;
+}
+message OfferPayment {
+    optional int64 micros = 1;
+    optional string currencyCode = 2;
+    optional OfferPaymentPeriod offerPaymentPeriod = 3;
+    repeated OfferPaymentOverride offerPaymentOverride = 4;
+}
+message VoucherTerms {
 }
 message RentalTerms {
     optional int32 dEPRECATEDGrantPeriodSeconds = 1;
@@ -644,6 +685,7 @@ message BulkDetailsRequest {
     optional bool includeChildDocs = 2;
     optional bool includeDetails = 3;
     optional string sourcePackageName = 4;
+    repeated int32 installedVersionCode = 5;
 }
 message BulkDetailsResponse {
     repeated BulkDetailsEntry entry = 1;
@@ -752,6 +794,20 @@ message Image {
     }
     optional int32 durationSeconds = 14;
     optional string fillColorRgb = 15;
+    optional bool autogen = 16;
+    optional Attribution attribution = 17;
+    optional string backgroundColorRgb = 19;
+    optional ImagePalette palette = 20;
+    optional int32 deviceClass = 21;
+    optional bool supportsFifeMonogramOption = 22;
+}
+message ImagePalette {
+}
+message Attribution {
+    optional string sourceTitle = 1;
+    optional string sourceUrl = 2;
+    optional string licenseTitle = 3;
+    optional string licenseUrl = 4;
 }
 message TranslatedText {
     optional string text = 1;
@@ -883,6 +939,21 @@ message AlbumDetails {
     optional MusicDetails details = 2;
     optional ArtistDetails displayArtist = 3;
 }
+
+message Dependency {
+    optional string packageName = 1;
+    optional int32 minVersionCode = 2;
+    optional int32 versionCodeMask = 3;
+    optional bool skipPermissions = 4;
+}
+
+message InstallDetails {
+    optional int32 installLocation = 1;
+    optional int64 size = 2;
+    optional Dependency dependency = 3;
+    optional int32 targetSdkVersion = 4;
+}
+
 message AppDetails {
     optional string developerName = 1;
     optional int32 majorVersionNumber = 2;
@@ -912,6 +983,9 @@ message AppDetails {
     optional bool everExternallyHosted = 28;
     optional string installNotes = 30;
     optional int32 installLocation = 31;
+    optional int32 targetSdkVersion = 32;
+    optional string hasPreregistrationPromoCode = 33;
+    optional InstallDetails installDetails = 34;
 }
 
 message CertificateSet {
@@ -946,11 +1020,19 @@ message DocumentDetails {
     optional TvEpisodeDetails tvEpisodeDetails = 11;
     // optional NewsDetails newsDetails = 12;
 }
+
+message PatchDetails {
+    optional int32 baseVersionCode = 1;
+    optional int64 size = 2;
+}
+
 message FileMetadata {
     optional int32 fileType = 1;
     optional int32 versionCode = 2;
     optional int64 size = 3;
     optional string splitId = 4;
+    optional int64 compressedSize = 5;
+    repeated PatchDetails patchDetails = 6;
 }
 message MagazineDetails {
     optional string parentDetailsUrl = 1;
@@ -1106,6 +1188,13 @@ message OverflowLink {
     optional Link link = 2;
 }
 
+message ReviewTip {
+    optional string tipUrl = 1;
+    optional string text = 2;
+    optional int32 polarity = 3;
+    optional int64 reviewCount = 4;
+}
+
 message DocV2 {
     optional string docid = 1;
     optional string backendDocid = 2;
@@ -1134,6 +1223,11 @@ message DocV2 {
     optional ProductDetails productDetails = 25;
     optional bool mature = 26;
     optional string promotionalDescription = 27;
+    optional bool availabileForPreregistration = 29;
+    repeated ReviewTip tip = 30;
+    optional string snippetsUrl = 31;
+    optional bool forceShareability = 32;
+    optional bool useWishlistAsPrimaryAction = 33;
 }
 
 message ProductDetails {
@@ -1527,7 +1621,59 @@ message Payload {
     optional PreparePurchaseResponse preparePurchaseResponse = 32;
     optional CommitPurchaseResponse commitPurchaseResponse = 33;
     optional DebugSettingsResponse debugSettingsResponse = 34;
+    optional CheckIabPromoResponse checkIabPromoResponse = 35;
+    optional UserActivitySettingsResponse userActivitySettingsResponse = 36;
+    optional RecordUserActivityResponse recordUserActivityResponse = 37;
+    optional RedeemCodeResponse redeemCodeResponse = 38;
+    optional SelfUpdateResponse selfUpdateResponse = 39;
+    optional searchSuggestResponse searchSuggestResponse = 40;
+    optional GetInitialInstrumentFlowStateResponse getInitialInstrumentFlowStateResponse = 41;
+    optional CreateInstrumentResponse createInstrumentResponse = 42;
+    optional ChallengeResponse challengeResponse = 43;
+    optional BackDeviceChoicesResponse backupDeviceChoicesResponse = 44;
+    optional BackupDocumentChoicesResponse backupDocumentChoicesResponse = 45;
+    optional EarlyUpdateResponse earlyUpdateResponse = 46;
+    optional PreloadsResponse preloadsResponse = 47;
+    optional MyAccountsResponse myAccountsResponse = 48;
+    optional ContentFilterResponse contentFilterResponse = 49;
+    optional ExperimentsResponse experimentsResponse = 50;
+    optional SurveyResponse surveyResponse = 51;
+    optional PingResponse pingResponse = 52;
+    optional UpdateUserSettingResponse updateUserSettingResponse = 53;
+    optional GetUserSettingsResponse getUserSettingsREsponse = 54;
+    optional GetSharingSettingsResponse getSharingSettingsResponse = 56;
+    optional UpdateSharingSettingsResponse updateSharingSettingsResponse = 57;
+    optional ReviewSnippetsResponse reviewSnippetsResponse = 58;
+    optional DocumentSharingStateResponse documentSharingStateResponse = 59;
+    optional ModuleDeliveryResponse moduleDeliveryResponse = 70;
 }
+
+message CheckIabPromoResponse  {}
+message UserActivitySettingsResponse  {}
+message RecordUserActivityResponse  {}
+message RedeemCodeResponse  {}
+message SelfUpdateResponse  {}
+message searchSuggestResponse  {}
+message GetInitialInstrumentFlowStateResponse  {}
+message CreateInstrumentResponse  {}
+message ChallengeResponse  {}
+message BackDeviceChoicesResponse  {}
+message BackupDocumentChoicesResponse  {}
+message EarlyUpdateResponse  {}
+message PreloadsResponse  {}
+message MyAccountsResponse  {}
+message ContentFilterResponse  {}
+message ExperimentsResponse  {}
+message SurveyResponse  {}
+message PingResponse  {}
+message UpdateUserSettingResponse  {}
+message GetUserSettingsResponse  {}
+message GetSharingSettingsResponse  {}
+message UpdateSharingSettingsResponse  {}
+message ReviewSnippetsResponse  {}
+message DocumentSharingStateResponse  {}
+message ModuleDeliveryResponse  {}
+
 message PreFetch {
     optional string url = 1;
     optional bytes response = 2;
